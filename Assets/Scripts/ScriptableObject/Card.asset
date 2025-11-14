@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e789c45f6b1a1a4ebd9246e728eb0a2, type: 3}
   m_Name: Card
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  CardName: 
-  UnitPrefab: {fileID: 0}
-  UnitGhostPrefab: {fileID: 0}
-  ManaCost: 0
-  Cooldown: 0
+  CardName: "\u30D5\u30A1\u30A4\u30E4\u30DE\u30F3"
+  UnitPrefab: {fileID: 6963798057153136065, guid: 89bf79baf212237469f0d8f6c4989747, type: 3}
+  UnitGhostPrefab: {fileID: 5955562374260664336, guid: 24d012f4cf8023a48b4984518d41feb3, type: 3}
+  ManaCost: 10
+  Cooldown: 5
   CanPlaceOnEnemySide: 0
