@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Card
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   CardName: "\u30D5\u30A1\u30A4\u30E4\u30DE\u30F3"
-  UnitPrefab: {fileID: 6963798057153136065, guid: 89bf79baf212237469f0d8f6c4989747, type: 3}
+  UnitPrefab: {fileID: 2069424524528196599, guid: 60b3ab72d0427c141a5b088de92ae8bc, type: 3}
   UnitGhostPrefab: {fileID: 5955562374260664336, guid: 24d012f4cf8023a48b4984518d41feb3, type: 3}
   ManaCost: 10
   Cooldown: 5
