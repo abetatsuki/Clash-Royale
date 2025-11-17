@@ -2,25 +2,26 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
+    [SerializeField] private float _alpha;
+
     private void Start()
     {
         var renderer = GetComponentInChildren<SkinnedMeshRenderer>();
         var material = renderer.material;
 
-        // URP Transparent 設定
-        material.SetFloat("_Surface", 1); // Transparent
-        material.SetFloat("_Blend", 0);   // Alpha blending
-        material.SetFloat("_ZWrite", 0);  // 深度書き込みオフ
+        // SurfaceType を Transparent
+        material.SetFloat("_Surface", 1);
 
-        // 半透明
-        material.SetColor("_BaseColor", new Color(1f, 1f, 1f, 0.5f));
+        // ブレンドモード（Alpha）
+        material.SetFloat("_Blend", 0);
 
-        // キーワードも有効化（重要）
-        material.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
-        material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
-        material.DisableKeyword("_SURFACE_TYPE_OPAQUE");
+        // 深度書き込みオフ
+        material.SetFloat("_ZWrite", 0);
 
-        // 描画キュー設定
+        // 半透明カラー
+        material.SetColor("_BaseColor", new Color(1f,1f,1f,_alpha));
+
+        // RenderQueue を Transparent に
         material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
     }
 }

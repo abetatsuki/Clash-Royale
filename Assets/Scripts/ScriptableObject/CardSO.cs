@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 /// <summary>
 /// カードの生成の時に使うデータクラス
@@ -11,5 +12,6 @@ public class CardSO : ScriptableObject
     public int ManaCost;
     public float Cooldown;            // 置いた後のクールダウン（秒）
     public bool CanPlaceOnEnemySide = false; // 右側/左側判定などに使う
+    public Sprite Icon;
    
 }
