@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     private ManaEntity _manaEntity;
     [SerializeField] private PlayerDataSO _playerDataSO;
     private HealthEntity _healthEntity;
+    public ManaEntity ManaEntity => _manaEntity;
 
     public event Action<int, int> OnManaChanged
     {
@@ -16,9 +17,9 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(_manaEntity.CurrentMana);
+       
         _manaEntity.ManaCost(10);
-        Debug.Log(_manaEntity.CurrentMana);
+       
         _manaEntity.Start();
     }
 
