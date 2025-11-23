@@ -15,6 +15,7 @@ public class ManaEntity
     
     public void Start()
     {
+        OnManaChanged?.Invoke(CurrentMana, _maxCurrentMana);
         RunManaLoop().Forget();
     }
 
