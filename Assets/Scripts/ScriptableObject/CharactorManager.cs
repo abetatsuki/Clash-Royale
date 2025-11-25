@@ -12,6 +12,7 @@ public class CharactorManager : MonoBehaviour
     private Transform _this;
     private Transform _target;
     private Animator _animator;
+    private AnimationCon _animCon;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class CharactorManager : MonoBehaviour
         _this = transform;
         _target = GameObject.Find("target").transform;
         _mover = new CharactorMover(_agent, _target, _this);
+        _animCon = new AnimationCon(_animator, _mover);
     }
 
     private void Update()
