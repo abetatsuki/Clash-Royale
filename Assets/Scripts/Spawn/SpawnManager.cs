@@ -54,7 +54,6 @@ public class SpawnManager : MonoBehaviour
         _currentPreview = Instantiate(card.UnitGhostPrefab);
         _isValidPlacement = false;
         _isGeneret = true;
-            
         }
     }
 
@@ -95,10 +94,9 @@ public class SpawnManager : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame && _isValidPlacement)
         {
-            Debug.Log(_currentMana);
             if (_currentMana > 0)
             {
-                Instantiate(_currentCard.UnitPrefab,
+              GameObject go =  Instantiate(_currentCard.UnitPrefab,
                     _currentPreview.transform.position,
                     Quaternion.identity);
 
