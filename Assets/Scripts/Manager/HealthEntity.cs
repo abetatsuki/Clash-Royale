@@ -12,17 +12,21 @@ public class HealthEntity
 
     public event Action<int, int> OnHealthChanged;
     public event Action OnDeath;
+    public bool IsAlive => _isAlive;
 
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
-        if (_currentHealth < 0)
+        if (!_isAlive) return;
+        
+        _currentHealth =  Mathf.Max(_currentHealth - damage, 0);
+        if (_currentHealth == 0)
         {
-            _currentHealth = 0;
+            _isAlive = false;
             OnDeath?.Invoke();
         }
-
+       
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+        Debug.Log(_currentHealth);
     }
 
     public void Heal(int amount)
@@ -38,4 +42,5 @@ public class HealthEntity
 
     private int _currentHealth;
     private readonly int _maxHealth;
+    private bool _isAlive = true;
 }
