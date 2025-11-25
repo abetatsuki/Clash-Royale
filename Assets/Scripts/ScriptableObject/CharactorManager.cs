@@ -11,11 +11,11 @@ public class CharactorManager : MonoBehaviour
     private NavMeshAgent _agent;
     private Transform _this;
     private Transform _target;
-    private AnimatorController _animatorController;
+    private Animator _animator;
 
     private void Awake()
     {
-        _animatorController = GetComponentInChildren<AnimatorController>();
+        _animator = GetComponentInChildren<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _this = transform;
         _target = GameObject.Find("target").transform;
