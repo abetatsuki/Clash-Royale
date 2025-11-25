@@ -1,4 +1,4 @@
-using System.Data;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +9,10 @@ public class CharactorMover
     private Transform _this;
     private float _distance = 3f;
     private Vector3 _lastTargetPos;
+    private float _speed = 3f;
+    private float _currentSpeed = 0f;
+    private float _decelerateRate = 3f;
+    public event Action<float> ChangeSpeed;
 
     public CharactorMover(NavMeshAgent agent, Transform target, Transform _this)
     {
@@ -31,6 +35,7 @@ public class CharactorMover
     {
         if (DistanceToTarget() > _agent.stoppingDistance)
         {
+            _currentSpeed = Mathf.Lerp(_currentSpeed, _speed, Time.deltaTime * _decelerateRate);
             if (_lastTargetPos != _target.position)
             {
                 _agent.SetDestination(_target.position);
@@ -39,7 +44,11 @@ public class CharactorMover
         }
         else
         {
-            Debug.Log("最も近い距離まで歩きました。");
+            _currentSpeed = Mathf.Lerp(_currentSpeed, 0f,
+                Time.deltaTime * _decelerateRate);
         }
+
+        _agent.speed = _currentSpeed;
+        ChangeSpeed?.Invoke(_currentSpeed);
     }
 }
