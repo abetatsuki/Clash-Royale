@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface ICharactor
+public interface IHitable
 {
     public GameObject gameObject{get;}
     

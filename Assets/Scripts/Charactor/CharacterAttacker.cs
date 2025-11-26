@@ -9,7 +9,7 @@ public class CharacterAttacker
    
     private CharacterStatus _characterStatus;
 
-    private void Attack(ICharactor target)
+    private void Attack(IHitable target)
     {
         if(target == null) return;
         Debug.Log($"{_characterStatus.Name} attacks {target.gameObject.name} " +
