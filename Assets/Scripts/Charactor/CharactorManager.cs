@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CharactorManager : MonoBehaviour
+public class CharactorManager : MonoBehaviour, IHitable
 {
     [SerializeField] private CharacterStatus _characterStatus;
     private CharactorMover _mover;
@@ -14,6 +14,7 @@ public class CharactorManager : MonoBehaviour
     private Animator _animator;
     private AnimationCon _animCon;
     private HealthEntity _healthEntity;
+    private CharacterAttacker _attacker;
     public void TakeDamage( int  damage) => _healthEntity.TakeDamage(damage);
 
     private void Awake()
@@ -25,7 +26,7 @@ public class CharactorManager : MonoBehaviour
         _healthEntity = new HealthEntity(100); 
         _mover = new CharactorMover(_agent, _target, _this);
         _animCon = new AnimationCon(_animator, _mover);
-        TakeDamage(1);
+        _attacker = new CharacterAttacker(_characterStatus);
     }
 
     private void Update()
