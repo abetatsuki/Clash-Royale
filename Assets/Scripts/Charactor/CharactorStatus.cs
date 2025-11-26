@@ -10,5 +10,5 @@ public class CharacterStatus : ScriptableObject
     public string Name;
     public int MaxHp;
     public float MoveSpeed;
-    public float AttackPower;
+    public int AttackPower;
 }
