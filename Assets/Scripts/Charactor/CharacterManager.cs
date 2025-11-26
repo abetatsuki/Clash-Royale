@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using System;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CharactorManager : MonoBehaviour, IHitable
+public class CharacterManager : MonoBehaviour, IHitable
 {
     [SerializeField] private CharacterStatus _characterStatus;
     private CharactorMover _mover;
@@ -15,8 +16,13 @@ public class CharactorManager : MonoBehaviour, IHitable
     private AnimationCon _animCon;
     private HealthEntity _healthEntity;
     private CharacterAttacker _attacker;
+    private IReadOnlyList<CharacterManager> enemies;
     public void TakeDamage( int  damage) => _healthEntity.TakeDamage(damage);
 
+    public void TakeEnemy(EnemyContainer enemy)
+    {
+        enemies = enemy.EnemyList;
+    }
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
